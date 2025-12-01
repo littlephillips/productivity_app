@@ -13,7 +13,7 @@ export const getTasks = () => {
     { name: "Meditation", done: false, timeSpent: 0, requiredTime: 10, incomplete: false, lastCompletedDate: null, status: "pending" },
     { name: "Book Reading", done: false, timeSpent: 0, requiredTime: 30, incomplete: false, lastCompletedDate: null, status: "pending" },
     { name: "Online Writing", done: false, timeSpent: 0, requiredTime: 300, incomplete: false, lastCompletedDate: null, status: "pending" },
-    { name: "Bible Study", done: false, timeSpent: 0, requiredTime: 1, incomplete: false, lastCompletedDate: null, status: "pending" },
+    { name: "Bible Study", done: false, timeSpent: 0, requiredTime: 10, incomplete: false, lastCompletedDate: null, status: "pending" },
   ];
   // Reset tasks if it's a new day
   const today = dayjs().format("YYYY-MM-DD");
