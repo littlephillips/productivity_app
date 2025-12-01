@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Dashboard from "./components/Dashboard";
 // // import AuthForm from "./components/AuthForm";
 // import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path="/" element={ <Dashboard />} />
           </Routes> 
         </main>
+        <Footer />
       </div>
     </Router>
   );
