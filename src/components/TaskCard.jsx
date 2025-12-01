@@ -23,8 +23,10 @@ const TaskCard = ({ task, updateTask, runningTask, setRunningTask }) => {
     if (task.done) return "text-green-400";
     if (task.incomplete) return "text-red-400";
     if (running) return "text-yellow-400";
-    return "text-gray-400";
+    return "text-amber-500";
   };
+
+  
 
   const remainingTime = Math.max(0, task.requiredTime * 60 - time);
   const remainingDisplay = running ? "" : ` (${Math.floor(remainingTime / 60)}m ${remainingTime % 60}s remaining)`;
