@@ -38,7 +38,7 @@ const DailySummary = ({ tasks }) => {
       {/* Total Footer */}
       <div className="bg-gray-800/50 px-5 py-2.5 text-center border-t border-gray-700">
         <p className="text-sm text-gray-300">
-          <span className="font-medium">{total}</span> total tasks today
+          <span className="font-medium"> 📌 {total}</span> total tasks today
         </p>
       </div>
     </div>
