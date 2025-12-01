@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 
 export const getTasks = () => {
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [
-    { name: "Mean Stack", done: false, timeSpent: 0, requiredTime: 60, incomplete: false, lastCompletedDate: null, status: "pending" },
+    { name: "Mern Stack", done: false, timeSpent: 0, requiredTime: 60, incomplete: false, lastCompletedDate: null, status: "pending" },
     { name: "Data Structures", done: false, timeSpent: 0, requiredTime: 60, incomplete: false, lastCompletedDate: null, status: "pending" },
     { name: "Programming Tools", done: false, timeSpent: 0, requiredTime: 60, incomplete: false, lastCompletedDate: null, status: "pending" },
     { name: "System Design", done: false, timeSpent: 0, requiredTime: 60, incomplete: false, lastCompletedDate: null, status: "pending" },
