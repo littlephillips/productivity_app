@@ -15,6 +15,7 @@ const DEFAULT_TASKS = [
   { name: "Bible Study (Bible)", requiredTime: 10 },
   { name: "Book Reading (Ebook)", requiredTime: 30 },
   { name: "Applications (Firefox)", requiredTime: 90 },
+  { name: "LeetCode Daily Challenge", requiredTime: 45 },
   { name: "Mern Stack (mygreatlearning)", requiredTime: 90 },
   { name: "Data Structures (MIT Youtube)", requiredTime: 60 },
   { name: "Programming Tools (mygreatlearning)", requiredTime: 60 },
