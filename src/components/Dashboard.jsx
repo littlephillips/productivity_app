@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TaskCard from "./TaskCard";
 import DailySummary from "./DailySummary";
-import { getTasks, saveTasks } from "../utils/storage";
+import { getTasks, saveTasks, clearTasks} from "../utils/storage";
 import { FaPlus } from "react-icons/fa";
 
 const Dashboard = () => {
@@ -60,6 +60,18 @@ const Dashboard = () => {
           ))}
         </div>
       </div>
+
+``     {/* Floating Clear Button */}
+      <button
+      onClick={() => {
+      clearTasks();
+      setTasks(getTasks()); 
+      }}
+      className="fixed bottom-8 left-8 bg-red-600 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition transform z-50 text-sm font-bold"
+      >
+      Clear Tasks
+      </button>
+
 
       {/* Floating Add Button */}
       <button
