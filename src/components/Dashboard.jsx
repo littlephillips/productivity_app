@@ -96,7 +96,7 @@ const Dashboard = () => {
                 onClick={addTask}
                 className="flex-1 bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-bold transition"
               >
-                Add Task
+                Add Task (temp)
               </button>
               <button
                 onClick={() => setShowAddModal(false)}
