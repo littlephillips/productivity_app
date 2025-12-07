@@ -12,9 +12,11 @@ export const getTasks = () => {
     { name: "Workout", done: false, timeSpent: 0, requiredTime: 60, incomplete: false, lastCompletedDate: null, status: "pending" },
     { name: "Meditation", done: false, timeSpent: 0, requiredTime: 10, incomplete: false, lastCompletedDate: null, status: "pending" },
     { name: "Book Reading", done: false, timeSpent: 0, requiredTime: 30, incomplete: false, lastCompletedDate: null, status: "pending" },
-    { name: "Online Writing", done: false, timeSpent: 0, requiredTime: 300, incomplete: false, lastCompletedDate: null, status: "pending" },
     { name: "Bible Study", done: false, timeSpent: 0, requiredTime: 10, incomplete: false, lastCompletedDate: null, status: "pending" },
     { name: "Software Testing (Alisons + Youtube)", done: false, timeSpent: 0, requiredTime: 45, incomplete: false, lastCompletedDate: null, status: "pending" },
+    { name: "Applications", done: false, timeSpent: 0, requiredTime: 120, incomplete: false, lastCompletedDate: null, status: "pending" },
+    { name: "Binance", done: false, timeSpent: 0, requiredTime: 60, incomplete: false, lastCompletedDate: null, status: "pending" },
+    { name: "classes", done: false, timeSpent: 0, requiredTime: 120, incomplete: false, lastCompletedDate: null, status: "pending" }
   ];
   // Reset tasks if it's a new day
   const today = dayjs().format("YYYY-MM-DD");
