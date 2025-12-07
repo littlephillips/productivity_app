@@ -1,32 +1,75 @@
+
+
 import dayjs from "dayjs";
 
+// Define ALL default tasks here (including any new ones you add in the future)
+const DEFAULT_TASKS = [
+  { name: "SQL (Zindua)", requiredTime: 60 },
+  { name: "Typing (zty.pe)", requiredTime: 10 },
+  { name: "Binance (Web App)", requiredTime: 60 },
+  { name: "Docker (Alisons)", requiredTime: 60 },
+  { name: "Research (Chrome)", requiredTime: 90 },
+  { name: "Workout (Youtube)", requiredTime: 60 },
+  { name: "Classes (Portable)", requiredTime: 90 },
+  { name: "Meditation (Youtube)", requiredTime: 10 },
+  { name: "Bible Study (Bible)", requiredTime: 10 },
+  { name: "Book Reading (Ebook)", requiredTime: 30 },
+  { name: "Applications (Firefox)", requiredTime: 90 },
+  { name: "Mern Stack (mygreatlearning)", requiredTime: 90 },
+  { name: "Data Structures (MIT Youtube)", requiredTime: 60 },
+  { name: "Programming Tools (mygreatlearning)", requiredTime: 60 },
+  { name: "System Design (FreeCodeCamp Youtube)", requiredTime: 60 },
+  { name: "Software Testing (Alisons + Youtube)", requiredTime: 45 },
+];
+
+/* * Helper: Create a fresh task object with default values */
+const createFreshTask = (template) => ({
+  name: template.name,
+  requiredTime: template.requiredTime,
+  done: false,
+  timeSpent: 0,
+  incomplete: false,
+  lastCompletedDate: null,
+  status: "pending",
+});
+
 export const getTasks = () => {
-  const tasks = JSON.parse(localStorage.getItem("tasks")) || [
-    { name: "SQL (Zindua)", done: false, timeSpent: 0, requiredTime: 60, incomplete: false, lastCompletedDate: null, status: "pending" },
-    { name: "Typing (zty.pe)", done: false, timeSpent: 0, requiredTime: 10, incomplete: false, lastCompletedDate: null, status: "pending" },
-    { name: "Binance (Web App)", done: false, timeSpent: 0, requiredTime: 60, incomplete: false, lastCompletedDate: null, status: "pending" },
-    { name: "Docker (Alisons)", done: false, timeSpent: 0, requiredTime: 60, incomplete: false, lastCompletedDate: null, status: "pending" },
-    { name: "Research (Chrome)", done: false, timeSpent: 0, requiredTime: 90, incomplete: false, lastCompletedDate: null, status: "pending" },
-    { name: "Workout (Youtube) ", done: false, timeSpent: 0, requiredTime: 60, incomplete: false, lastCompletedDate: null, status: "pending" },
-    { name: "Classes (Portable)", done: false, timeSpent: 0, requiredTime: 90, incomplete: false, lastCompletedDate: null, status: "pending" },
-    { name: "Meditation (Youtube)", done: false, timeSpent: 0, requiredTime: 10, incomplete: false, lastCompletedDate: null, status: "pending" },
-    { name: "Bible Study (Bible)", done: false, timeSpent: 0, requiredTime: 10, incomplete: false, lastCompletedDate: null, status: "pending" },
-    { name: "Book Reading (Ebook) ", done: false, timeSpent: 0, requiredTime: 30, incomplete: false, lastCompletedDate: null, status: "pending" },
-    { name: "Applications (Firefox)", done: false, timeSpent: 0, requiredTime: 90, incomplete: false, lastCompletedDate: null, status: "pending" },
-    { name: "Mern Stack (mygreatlearning)", done: false, timeSpent: 0, requiredTime: 90, incomplete: false, lastCompletedDate: null, status: "pending" },
-    { name: "Data Structures (MIT Youtube)", done: false, timeSpent: 0, requiredTime: 60, incomplete: false, lastCompletedDate: null, status: "pending" },
-    { name: "Programming Tools (mygreatlearning)", done: false, timeSpent: 0, requiredTime: 60, incomplete: false, lastCompletedDate: null, status: "pending" },
-    { name: "System Design (FreeCodeCamp Youtube)", done: false, timeSpent: 0, requiredTime: 60, incomplete: false, lastCompletedDate: null, status: "pending" },
-    { name: "Software Testing (Alisons + Youtube)", done: false, timeSpent: 0, requiredTime: 45, incomplete: false, lastCompletedDate: null, status: "pending" }
-  ];
-  // Reset tasks if it's a new day
+  const savedTasks = JSON.parse(localStorage.getItem("tasks") || "null");
   const today = dayjs().format("YYYY-MM-DD");
-  return tasks.map(task => {
-    if (task.lastCompletedDate && task.lastCompletedDate !== today) {
-      return { ...task, done: false, timeSpent: 0, incomplete: false, status: "pending" };
-    }
-    return task;
-  });
+
+  let tasks = [];
+
+  if (!savedTasks || !Array.isArray(savedTasks)) {
+    // First time user: use all defaults
+    tasks = DEFAULT_TASKS.map(createFreshTask);
+  } else {
+    // Existing user: keep their tasks + add any missing new defaults
+    const savedTaskNames = new Set(savedTasks.map(t => t.name));
+    
+    savedTasks.forEach(savedTask => {
+      // Preserve user progress, but reset if from previous day
+      if (savedTask.lastCompletedDate && savedTask.lastCompletedDate !== today) {
+        tasks.push({
+          ...savedTask,
+          done: false,
+          timeSpent: 0,
+          incomplete: false,
+          status: "pending",
+        });
+      } else {
+        tasks.push(savedTask);
+      }
+    });
+
+    // Add any new default tasks that the user doesn't have yet
+    DEFAULT_TASKS.forEach(template => {
+      if (!savedTaskNames.has(template.name)) {
+        tasks.push(createFreshTask(template));
+      }
+    });
+  }
+
+  return tasks;
 };
 
 export const saveTasks = (tasks) => {
