@@ -67,7 +67,7 @@ const Dashboard = () => {
       clearTasks();
       setTasks(getTasks()); 
       }}
-      className="fixed bottom-8 left-8 bg-red-600 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition transform z-50 text-sm font-bold"
+       className="hidden md:flex fixed top-5 left-0 bg-red-600 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition transform z-50 text-sm font-bold w-35"
       >
       Clear Tasks
       </button>
@@ -76,9 +76,9 @@ const Dashboard = () => {
       {/* Floating Add Button */}
       <button
         onClick={() => setShowAddModal(true)}
-        className="fixed bottom-8 right-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-5 rounded-full shadow-2xl hover:scale-110 transition transform z-50 flex items-center gap-3 text-lg font-bold"
+       className="hidden md:flex fixed top-5 right-0 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition transform z-50 text-sm font-bold w-35 flex items-center justify-center gap-2 "
       >
-        <FaPlus size={28} /> Add Task
+        <FaPlus size={20} /> Add Task
       </button>
 
       {/* Add Task Modal */}
